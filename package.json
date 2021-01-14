@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config configs/webpack.client.js"
+    "dev": "webpack serve --config configs/webpack.client.js",
+    "build:ssr": "webpack --config configs/webpack.server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.1",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0",
     "vue-loader": "^15.9.6",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.12",
@@ -32,6 +35,8 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "vue": "^2.6.12"
+    "koa-static": "^5.0.0",
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12"
   }
 }
