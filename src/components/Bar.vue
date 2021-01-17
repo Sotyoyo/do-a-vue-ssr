@@ -1,5 +1,5 @@
 <template>
-  <h1 @click="bar">Hello Bar! {{ num }}</h1>
+  <h1 @click="bar">Hello Bar! {{ $store.state.name }}</h1>
 </template>
 
 <script>
@@ -15,7 +15,9 @@ export default {
       alert('bar!')
     },
   },
-  created() {},
+  created() {
+    this.$store.dispatch('changeName')
+  },
 }
 </script>
 <style scoped="true">
