@@ -24,6 +24,7 @@ const renderer = VueServerRenderer.createBundleRenderer(serverBundle, {
 router.get('/', async (ctx) => {
   ctx.body = await new Promise((resolve, reject) => {
     renderer.renderToString({ url: ctx.url }, (err, html) => {
+      if (err && err.code === 404) resolve('not found')
       if (err) reject(err)
       resolve(html)
     })
@@ -35,6 +36,7 @@ router.get('/(.*)', async (ctx) => {
   console.log(' hit other routes')
   ctx.body = await new Promise((resolve, reject) => {
     renderer.renderToString({ url: ctx.url }, (err, html) => {
+      if (err && err.code === 404) resolve('not found')
       if (err) reject(err)
       resolve(html)
     })
