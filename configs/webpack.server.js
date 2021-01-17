@@ -4,9 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.base')
 
 module.exports = merge(baseConfig, {
-  mode: 'development',
   target: 'node',
-  entry: path.resolve(__dirname, '../src/server.js'),
+  entry: {
+    server: path.resolve(__dirname, '../src/server.js'),
+  },
   output: {
     libraryTarget: 'commonjs2',
   },
@@ -15,8 +16,6 @@ module.exports = merge(baseConfig, {
       template: path.resolve(__dirname, '../public/template.html'),
       filename: 'server.html',
       excludeChunks: ['server'],
-      minify: false,
-      // 默认的名字叫index.html
     }),
   ],
 })
