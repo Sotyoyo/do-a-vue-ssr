@@ -30,7 +30,20 @@ router.get('/', async (ctx) => {
   })
 })
 
-// 当客户端发送请求时会先去dist目录下查找
+// 这个要放下面，否则上面那个 '/' 也会被hit到  ？
+router.get('/(.*)', async (ctx) => {
+  console.log(' hit other routes')
+  ctx.body = await new Promise((resolve, reject) => {
+    renderer.renderToString((err, html) => {
+      if (err) reject(err)
+      resolve(html)
+    })
+  })
+})
+
+// koa的洋葱圈模型
+// 先查找静态文件，再看是否是匹配路径
 app.use(static(path.resolve(__dirname, 'dist')))
 app.use(router.routes())
+
 app.listen(3000)
