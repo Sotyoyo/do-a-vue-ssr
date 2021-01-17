@@ -1,6 +1,7 @@
 import createApp from './app.js'
 
-export default ({ url }) => {
+export default (context) => {
+  const { url } = context
   // 此方法是在服务端调用的
   return new Promise((resolve, reject) => {
     const { app, router, store } = createApp()
@@ -17,9 +18,10 @@ export default ({ url }) => {
         Promise.all(
           matchedComponents.map((component) => {
             // 把服务端的store传进去
-            component.asyncData && component.asyncData(store)
+            return component.asyncData && component.asyncData(store)
           })
         ).then(() => {
+          context.state = store.state
           resolve(app) // 每次都能产生一个新的应用
         })
       }

@@ -17,6 +17,7 @@ export default {
   },
   asyncData(store) {
     // 希望在服务端执行
+    console.log('server call asyncData')
     return store.dispatch('changeName')
   },
 }
