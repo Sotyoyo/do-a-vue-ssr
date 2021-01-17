@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: 'development',
+  devtool: 'source-map',
   output: {
     filename: '[name].bundle.js', // 默认就是main, 默认是dist目录
     path: path.resolve(__dirname, '../dist'),

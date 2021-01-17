@@ -13,4 +13,7 @@ module.exports = merge(baseConfig, {
       filename: 'client.html',
     }),
   ],
+  devServer: {
+    contentBase: path.resolve(__dirname, '../dist'),
+  },
 })

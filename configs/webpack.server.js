@@ -16,6 +16,8 @@ module.exports = merge(baseConfig, {
       template: path.resolve(__dirname, '../public/template.html'),
       filename: 'server.html',
       excludeChunks: ['server'],
+      // 配置ejs变量，写入server.html ejs模版中
+      client: '/client.bundle.js',
     }),
   ],
 })
