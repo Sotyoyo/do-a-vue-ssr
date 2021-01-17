@@ -15,8 +15,9 @@ export default {
       alert('bar!')
     },
   },
-  created() {
-    this.$store.dispatch('changeName')
+  asyncData(store) {
+    // 希望在服务端执行
+    return store.dispatch('changeName')
   },
 }
 </script>
