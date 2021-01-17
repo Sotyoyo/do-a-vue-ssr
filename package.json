@@ -7,7 +7,7 @@
     "dev": "webpack serve --config configs/webpack.client.js",
     "build:client": "webpack --config configs/webpack.client.js --watch",
     "build:server": "webpack --config configs/webpack.server.js --watch",
-    "run-build": "concurrently \"npm run build:client\" \"npm run build:server\""
+    "build": "concurrently \"npm run build:client\" \"npm run build:server\""
   },
   "repository": {
     "type": "git",
